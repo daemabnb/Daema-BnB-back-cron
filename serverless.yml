@@ -1,0 +1,19 @@
+service: daemabnb-cron
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  environment:
+    
+
+package:
+  exclude:
+    - node_modules/**/*
+  include:
+    - src/*
+
+functions:
+  deleteShareByTime:
+    handler: src/index.updateShareStatusByTime
+    events:
+      - schedule: cron(0 15 * * ? *)

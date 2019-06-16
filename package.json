@@ -1,0 +1,21 @@
+{
+  "name": "daema-bnb-back-cron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "mongoose": "^5.6.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.27",
+    "@types/dotenv": "^6.1.1",
+    "@types/mongoose": "^5.5.6",
+    "serverless-offline": "^5.3.3",
+    "serverless-plugin-typescript": "^1.1.7",
+    "typescript": "^3.5.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
