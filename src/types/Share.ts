@@ -1,4 +1,4 @@
-import { Document, Model } from 'mongoose';
+import { Document, Model, Query } from 'mongoose';
 
 export enum ShareStatus {
   onShare = 'onShare',
@@ -31,5 +31,5 @@ export interface IShare {
 export interface ShareDocument extends Document, IShare {}
 
 export interface ShareModel extends Model<ShareDocument> {
-  updateShareStatusByTime(time: number, status: ShareStatus): Promise<{}>
+  updateShareStatusByTime(time: number, status: ShareStatus): Promise<Query<any>>
 }

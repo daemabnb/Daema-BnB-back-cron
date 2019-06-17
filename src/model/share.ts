@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model, Query } from 'mongoose'
 import { ShareDocument, ShareModel, ShareStatus } from '../types/Share'
 
 const ShareSchema: Schema = new Schema({
@@ -71,7 +71,7 @@ const ShareSchema: Schema = new Schema({
   },
 });
 
-ShareSchema.statics.updateShareStatusByTime = (time: number, status: ShareStatus) => {
+ShareSchema.statics.updateShareStatusByTime = (time: number, status: ShareStatus): Promise<Query<any>> => {
   return Share.updateMany({
     returnDate: { $lt: time },
     status: { $ne: ShareStatus.end },
