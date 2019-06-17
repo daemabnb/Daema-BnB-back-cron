@@ -1,0 +1,29 @@
+service:
+  name: daemabnb-cron
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  memorySize: 128
+  timeout: 3
+  stage: ${opt:stage, 'dev'}
+  region: ${env:REGION}
+  environment:
+    MONGO_URI: ${env:MONGO_URI}
+
+package:
+  exclude:
+    - node_modules/**/*
+  include:
+    - src/*
+
+functions:
+  deleteShareByTime:
+    handler: src/index.updateShareStatusByTime
+    events:
+      - schedule: cron(0 15 * * ? *)
